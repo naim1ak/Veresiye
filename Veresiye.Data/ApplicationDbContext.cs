@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Veresiye.Data.Builders;
 using Veresiye.Model;
 
 namespace Veresiye.Data
@@ -12,7 +13,6 @@ namespace Veresiye.Data
     {
         public ApplicationDbContext() : base("name=DefaultConnection")
         {
-
         }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
@@ -21,7 +21,8 @@ namespace Veresiye.Data
         {
             base.OnModelCreating(modelBuilder);
             var userBuilder = new UserBuilder(modelBuilder.Entity<User>());
+            var companyBuilder = new CompanyBuilder(modelBuilder.Entity<Company>());
+            var activityBuilder = new ActivityBuilder(modelBuilder.Entity<Activity>());
         }
-
     }
 }

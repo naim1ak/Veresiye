@@ -19,7 +19,8 @@ namespace Veresiye.UI
         {
             //Autofac = IoC (Inter Vision Of Control) Provider'idir. Bununla dependency injection işlemi kolaylaşır.
             var builder = new ContainerBuilder();
-            builder.RegisterType<ApplicationDbContext>().As<ApplicationDbContext> ();
+            builder.RegisterType<ApplicationDbContext>().As<ApplicationDbContext> ().SingleInstance();
+
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 
@@ -30,6 +31,9 @@ namespace Veresiye.UI
 
             //formlarımız
             builder.RegisterType<FrmMain>().As<FrmMain>();
+            builder.RegisterType<FrmRegister>().As<FrmRegister>();
+            builder.RegisterType<FrmCompanies>().As<FrmCompanies>();
+            builder.RegisterType<FrmLogin>().As<FrmLogin>();
 
             var container = builder.Build();
 
@@ -38,7 +42,7 @@ namespace Veresiye.UI
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 var frm = scope.Resolve<FrmMain>();
-                Application.Run(new FrmMain());
+                Application.Run(frm);
             }
         }
     }

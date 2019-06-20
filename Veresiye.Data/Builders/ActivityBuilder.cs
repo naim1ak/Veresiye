@@ -14,8 +14,10 @@ namespace Veresiye.Data.Builders
         {
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Name).IsRequired().HasMaxLength(100);
-            
+            builder.Property(a => a.Amount).HasPrecision(18, 2).IsRequired();
+            builder.Property(a => a.ActivityType).IsRequired();
+            builder.Property(a => a.TransactionDate).IsRequired();
+            builder.HasRequired(a => a.Company).WithMany(b => b.Activities).HasForeignKey(a => a.CompanyId);
         }
-
     }
 }
