@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 311);
+            this.ClientSize = new System.Drawing.Size(615, 331);
             this.IsMdiContainer = true;
             this.Name = "FrmMain";
             this.Text = "Veresiye";

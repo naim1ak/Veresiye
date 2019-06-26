@@ -15,10 +15,18 @@ namespace Veresiye.UI
     public partial class FrmCompanies : Form
     {
         private readonly ICompanyService companyService;
-        public FrmCompanies(ICompanyService companyService)
+        private readonly FrmCompanyAdd frmCompanyAdd;
+        private readonly FrmCompanyEdit frmCompanyEdit;
+        public FrmCompanies(ICompanyService companyService, FrmCompanyAdd frmCompanyAdd, FrmCompanyEdit frmCompanyEdit)
         {
             this.companyService = companyService;
+            this.frmCompanyAdd = frmCompanyAdd;
+            this.frmCompanyEdit = frmCompanyEdit;
             InitializeComponent();
+            this.frmCompanyAdd.MdiParent = this.MdiParent;
+            this.frmCompanyAdd.MasterForm = this;
+            this.frmCompanyEdit.MdiParent = this.MdiParent;
+            this.frmCompanyEdit.MasterForm = this;
         }
         private void FrmCompanies_Load(object sender, EventArgs e)
         {
@@ -26,29 +34,44 @@ namespace Veresiye.UI
         }
         public void LoadCompanies()
         {
-            using (var db = new ApplicationDbContext())
-            {
-                this.dataGridView1.AutoGenerateColumns = false;
-                this.dataGridView1.DataSource = companyService.GetAll();
-            }
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.DataSource = companyService.GetAll();
         }
-
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var frm = new FrmCompanyAdd();
-            frm.MasterForm = this;
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+            this.frmCompanyAdd.Show();
+            this.frmCompanyAdd.LoadForm();
         }
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-
+            if (this.dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedId = int.Parse(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                this.frmCompanyEdit.Show();
+                this.frmCompanyEdit.LoadForm(selectedId);
+            }
+            else
+            {
+                MessageBox.Show("Lütfen düzenlemek istediğiniz firmayı seçiniz.");
+            }
         }
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-
+            if (this.dataGridView1.SelectedRows.Count > 0)
+            {
+                DialogResult exit = new DialogResult();
+                exit = MessageBox.Show("Firmayı silmek istediğinizden emin misiniz?", "Firma Sil", MessageBoxButtons.YesNo);
+                if (exit == DialogResult.Yes)
+                {
+                    int selectedId = int.Parse(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    companyService.Delete(selectedId);
+                    LoadCompanies();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen silmek istedğiniz firmayı seçiniz.");
+            }
         }
-
-        
     }
 }

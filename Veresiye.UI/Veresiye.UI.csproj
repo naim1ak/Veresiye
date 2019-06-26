@@ -56,11 +56,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmActivityEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActivityEdit.Designer.cs">
+      <DependentUpon>FrmActivityEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmActivityAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActivityAdd.Designer.cs">
+      <DependentUpon>FrmActivityAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCompanies.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCompanies.Designer.cs">
       <DependentUpon>FrmCompanies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCompanyEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCompanyEdit.Designer.cs">
+      <DependentUpon>FrmCompanyEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCompanyAdd.cs">
       <SubType>Form</SubType>
@@ -88,8 +106,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmActivityEdit.resx">
+      <DependentUpon>FrmActivityEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmActivityAdd.resx">
+      <DependentUpon>FrmActivityAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCompanies.resx">
       <DependentUpon>FrmCompanies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCompanyEdit.resx">
+      <DependentUpon>FrmCompanyEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCompanyAdd.resx">
       <DependentUpon>FrmCompanyAdd.cs</DependentUpon>

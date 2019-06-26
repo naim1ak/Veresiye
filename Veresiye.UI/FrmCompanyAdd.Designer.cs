@@ -140,8 +140,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmCompanyAdd";
-            this.Text = "FrmCompanyAdd";
-            this.Load += new System.EventHandler(this.FrmCompanyAdd_Load);
+            this.Text = "New Firm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCompanyAdd_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

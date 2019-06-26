@@ -47,11 +47,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
             this.Column1});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 43);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(544, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(533, 197);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column5
@@ -76,7 +76,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 41);
+            this.panel1.Size = new System.Drawing.Size(533, 41);
             this.panel1.TabIndex = 1;
             // 
             // btnDelete
@@ -113,9 +113,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 279);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(533, 238);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel1);
             this.Name = "FrmCompanies";
             this.Text = "FrmCompanies";
             this.Load += new System.EventHandler(this.FrmCompanies_Load);
